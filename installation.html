@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; HistomicsTK 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="HistomicsTK 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="API Documentation" href="api-docs.html"/>
+        <link rel="prev" title="HistomicsTK" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> HistomicsTK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-histomicstk-as-a-python-toolkit">Installing HistomicsTK as a Python toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-histomicstk-as-a-server-side-girder-plugin-using-vagrant">Installing HistomicsTK as a server-side Girder plugin using Vagrant</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api-docs.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HistomicsTK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/installation.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned in the <a class="reference internal" href="index.html"><span class="doc">index</span></a>, HistomicsTK can be used both as a pure
+Python toolkit for algorithm development and as server-side <a class="reference external" href="http://girder.readthedocs.io/en/latest/">Girder</a> plugin
+for web-based analysis. Here, we describe how to install HistomicsTK for both
+these scenarios.</p>
+<div class="section" id="installing-histomicstk-as-a-python-toolkit">
+<h2>Installing HistomicsTK as a Python toolkit<a class="headerlink" href="#installing-histomicstk-as-a-python-toolkit" title="Permalink to this headline">¶</a></h2>
+<p>HistomicsTK depends on <a class="reference external" href="https://github.com/DigitalSlideArchive/large_image">large_image</a> for reading large multi-resolution
+whole-slide images in a tiled fashion. Please see the Github repo of
+large_image to find out how to install it as a Python toolkit/package.</p>
+<p>HistomicsTK also leverages the functionality of a number of scientific python
+packages including <a class="reference external" href="http://www.numpy.org/">numpy</a>, <a class="reference external" href="https://www.scipy.org/">scipy</a>, <a class="reference external" href="http://scikit-image.org/">scikit-image</a>, <a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn</a>,
+and <a class="reference external" href="http://pandas.pydata.org/">pandas</a>.  If you have not built libtiff or openjpeg locally, we recommend
+installing <a class="reference external" href="https://www.continuum.io/downloads">anaconda</a> to ease the cross-platform installation of these packages
+all of which are listed in
+<a class="reference external" href="https://github.com/DigitalSlideArchive/HistomicsTK/blob/master/requirements_c_conda.txt">requirments_c_conda.txt</a>.
+If libtiff or openjpeg were built locally, use pip to install these packages,
+as otherwise the binaries may not match properly.</p>
+<p>Once large_image is installed as a python package, HistomicsTK can be
+installed as follows:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ git clone https://github.com/DigitalSlideArchive/HistomicsTK.git
+$ <span class="nb">cd</span> HistomicsTK
+$ conda config --add channels https://conda.binstar.org/cdeepakroy
+$ conda install --yes ctk-cli<span class="o">==</span><span class="m">1</span>.4.1
+$ pip install --no-cache-dir -r requirements_c_conda.txt
+$ pip install --no-cache-dir -r requirements.txt -r requirements_c.txt
+$ python setup.py build_ext --inplace
+$ pip install .
+</pre></div>
+</div>
+<p>If you build libtiff or openjpeg locally, ensure that the appropriate pip files
+have also been installed locally so that they use the correct libraries:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ pip install --upgrade --force-reinstall --ignore-installed --no-cache-dir openslide-python Pillow
+$ pip install --upgrade --force-reinstall --ignore-installed <span class="s1">&#39;git+https://github.com/pearu/pylibtiff@848785a6a9a4e2c6eb6f56ca9f7e8f6b32e523d5&#39;</span>
+</pre></div>
+</div>
+<p>We are working on releasing HistomicsTK on PyPI so it can easily be pip
+installed from there.</p>
+</div>
+<div class="section" id="installing-histomicstk-as-a-server-side-girder-plugin-using-vagrant">
+<h2>Installing HistomicsTK as a server-side Girder plugin using Vagrant<a class="headerlink" href="#installing-histomicstk-as-a-server-side-girder-plugin-using-vagrant" title="Permalink to this headline">¶</a></h2>
+<p>When HistomicsTK is used as a server-side <a class="reference external" href="http://girder.readthedocs.io/en/latest/">Girder</a> plugin for web-based
+analysis, the following three Girder plugins need to be installed:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://girder-worker.readthedocs.io/en/latest/">girder_worker</a>: A Girder plugin for distributed task execution.</li>
+<li><a class="reference external" href="https://github.com/DigitalSlideArchive/large_image">large_image</a>: A Girder plugin to create/serve/display large
+multi-resolution images produced by whole-slide imaging systems and a
+stand-alone Python package to read/write these images.</li>
+<li><a class="reference external" href="https://github.com/girder/slicer_cli_web">slicer_cli_web</a>: A Girder plugin for providing web-based RESTFul access
+to image analysis pipelines developed as slicer execution model
+CLIs and containerized using Docker.</li>
+</ul>
+<p>We used Vagrant and Ansible to ease the installation of these plugins in
+addition to HistomicsTK as follows:</p>
+<ul class="simple">
+<li>Download and install virtual box - <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>Download and install vagrant - <a class="reference external" href="https://www.vagrantup.com/downloads.html">https://www.vagrantup.com/downloads.html</a></li>
+<li><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ansible</span></code></li>
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/DigitalSlideArchive/HistomicsTK.git</span></code></li>
+<li><code class="docutils literal"><span class="pre">cd</span> <span class="pre">HistomicsTK</span> <span class="pre">&amp;&amp;</span> <span class="pre">vagrant</span> <span class="pre">up</span></code></li>
+</ul>
+<p>The Girder instance can then be accessed at <a class="reference external" href="http://localhost:8009">http://localhost:8009</a>. Any image
+placed in the sample_images subdirectory of the directory where HistomicsTK
+is cloned directory will be seen in the TCGA collection of Girder.</p>
+<p>The front-end UI that allows you to apply analysis modules in HistomicsTK&#8217;s
+docker plugins on data stored in Girder can be accessed at
+<a class="reference external" href="http://localhost:8009/histomicstk">http://localhost:8009/histomicstk</a>.</p>
+<p>You can also ssh into the vagrant virtual box using the command <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code>.
+HistomicsTK and its dependencies are installed at the location
+<code class="docutils literal"><span class="pre">/opt/histomicstk</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api-docs.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="HistomicsTK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Kitware, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

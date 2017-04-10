@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>histomicstk.preprocessing.color_deconvolution &mdash; HistomicsTK 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="HistomicsTK 0.1.0 documentation" href="index.html"/>
+        <link rel="up" title="histomicstk.preprocessing" href="histomicstk.preprocessing.html"/>
+        <link rel="next" title="histomicstk.preprocessing.color_normalization" href="histomicstk.preprocessing.color_normalization.html"/>
+        <link rel="prev" title="histomicstk.preprocessing.color_conversion" href="histomicstk.preprocessing.color_conversion.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> HistomicsTK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api-docs.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="histomicstk.html">histomicstk</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="histomicstk.utils.html">utils</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="histomicstk.preprocessing.html">preprocessing</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="histomicstk.preprocessing.color_conversion.html">color space conversion</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">color deconvolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="histomicstk.preprocessing.color_normalization.html">color normalization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="histomicstk.filters.html">filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="histomicstk.segmentation.html">segmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="histomicstk.features.html">features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HistomicsTK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api-docs.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="histomicstk.html">histomicstk</a> &raquo;</li>
+        
+          <li><a href="histomicstk.preprocessing.html">histomicstk.preprocessing</a> &raquo;</li>
+        
+      <li>histomicstk.preprocessing.color_deconvolution</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/histomicstk.preprocessing.color_deconvolution.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="module-histomicstk.preprocessing.color_deconvolution">
+<span id="histomicstk-preprocessing-color-deconvolution"></span><h1>histomicstk.preprocessing.color_deconvolution<a class="headerlink" href="#module-histomicstk.preprocessing.color_deconvolution" title="Permalink to this headline">¶</a></h1>
+<p>This package contains implementation of methods to deconvolve or separate
+the stains of histopathology images.</p>
+<dl class="function">
+<dt id="histomicstk.preprocessing.color_deconvolution.color_convolution">
+<code class="descclassname">histomicstk.preprocessing.color_deconvolution.</code><code class="descname">color_convolution</code><span class="sig-paren">(</span><em>im_stains</em>, <em>w</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/histomicstk/preprocessing/color_deconvolution/color_convolution.html#color_convolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#histomicstk.preprocessing.color_deconvolution.color_convolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs Color Convolution
+Reconstructs a color image from the stain matrix <cite>w</cite> and
+the individual images stored as channels in <cite>im_stains</cite> and generated
+by ColorDeconvolution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>im_stains</strong> (<em>array_like</em>) &#8211; An RGB image where in each channel contains image of one stain</li>
+<li><strong>w</strong> (<em>array_like</em>) &#8211; A 3x3 matrix containing the stain colors in its columns.
+In the case of two stains, the third column is zero and will be
+complemented using cross-product. The matrix should contain a
+minumum two nonzero columns.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>im_rgb</strong> &#8211; Reconstructed RGB image with intensity values ranging from [0, 255],
+suitable for display.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array_like</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#histomicstk.preprocessing.color_deconvolution.complement_stain_matrix" title="histomicstk.preprocessing.color_deconvolution.complement_stain_matrix"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_deconvolution.complement_stain_matrix()</span></code></a>, <a class="reference internal" href="#histomicstk.preprocessing.color_deconvolution.color_deconvolution" title="histomicstk.preprocessing.color_deconvolution.color_deconvolution"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_deconvolution.color_deconvolution()</span></code></a>, <a class="reference internal" href="histomicstk.preprocessing.color_conversion.html#histomicstk.preprocessing.color_conversion.rgb_to_od" title="histomicstk.preprocessing.color_conversion.rgb_to_od"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_conversion.rgb_to_od()</span></code></a>, <a class="reference internal" href="histomicstk.preprocessing.color_conversion.html#histomicstk.preprocessing.color_conversion.od_to_rgb" title="histomicstk.preprocessing.color_conversion.od_to_rgb"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_conversion.od_to_rgb()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="histomicstk.preprocessing.color_deconvolution.color_deconvolution">
+<code class="descclassname">histomicstk.preprocessing.color_deconvolution.</code><code class="descname">color_deconvolution</code><span class="sig-paren">(</span><em>im_rgb</em>, <em>w</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/histomicstk/preprocessing/color_deconvolution/color_deconvolution.html#color_deconvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#histomicstk.preprocessing.color_deconvolution.color_deconvolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs color deconvolution.
+The given RGB Image <cite>I</cite> is first first transformed into optical density
+space, and then projected onto the stain vectors in the columns of the
+3x3 stain matrix <cite>W</cite>.</p>
+<p>For deconvolving H&amp;E stained image use:</p>
+<p><cite>w</cite> = array([[0.650, 0.072, 0], [0.704, 0.990, 0], [0.286, 0.105, 0]])</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>im_rgb</strong> (<em>array_like</em>) &#8211; Input RGB Image that needs to be deconvolved.</li>
+<li><strong>w</strong> (<em>array_like</em>) &#8211; A 3x3 matrix containing the color vectors in columns.
+For two stain images the third column is zero and will be
+complemented using cross-product. Atleast two of the three
+columns must be non-zero.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>Stains</strong> (<em>array_like</em>) &#8211; An rgb image where in each channel contains the image of the
+stain of the corresponding column in the stain matrix <cite>W</cite>.
+The intensity range of each channel is [0, 255] suitable for
+displaying.</li>
+<li><strong>StainsFloat</strong> (<em>array_like</em>) &#8211; An intensity image of deconvolved stains that is unbounded,
+suitable for reconstructing color images of deconvolved stains
+with color_convolution.</li>
+<li><strong>wc</strong> (<em>array_like</em>) &#8211; A 3x3 complemented stain matrix. Useful for color image
+reconstruction with color_convolution.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#histomicstk.preprocessing.color_deconvolution.complement_stain_matrix" title="histomicstk.preprocessing.color_deconvolution.complement_stain_matrix"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_deconvolution.complement_stain_matrix()</span></code></a>, <a class="reference internal" href="#histomicstk.preprocessing.color_deconvolution.color_convolution" title="histomicstk.preprocessing.color_deconvolution.color_convolution"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_deconvolution.color_convolution()</span></code></a>, <a class="reference internal" href="histomicstk.preprocessing.color_conversion.html#histomicstk.preprocessing.color_conversion.rgb_to_od" title="histomicstk.preprocessing.color_conversion.rgb_to_od"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_conversion.rgb_to_od()</span></code></a>, <a class="reference internal" href="histomicstk.preprocessing.color_conversion.html#histomicstk.preprocessing.color_conversion.od_to_rgb" title="histomicstk.preprocessing.color_conversion.od_to_rgb"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_conversion.od_to_rgb()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="histomicstk.preprocessing.color_deconvolution.complement_stain_matrix">
+<code class="descclassname">histomicstk.preprocessing.color_deconvolution.</code><code class="descname">complement_stain_matrix</code><span class="sig-paren">(</span><em>w</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/histomicstk/preprocessing/color_deconvolution/complement_stain_matrix.html#complement_stain_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#histomicstk.preprocessing.color_deconvolution.complement_stain_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a complemented stain matrix
+Used to fill out empty columns of a stain matrix for use with
+color_deconvolution. Replaces right-most column with normalized
+cross-product of first two columns.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>w</strong> (<em>array_like</em>) &#8211; A 3x3 stain calibration matrix with stain color vectors in columns.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>w_comp</strong> &#8211; A 3x3 complemented stain calibration matrix with a third
+orthogonal column.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array_like</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#histomicstk.preprocessing.color_deconvolution.color_deconvolution" title="histomicstk.preprocessing.color_deconvolution.color_deconvolution"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_deconvolution.color_deconvolution()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="histomicstk.preprocessing.color_deconvolution.sparse_color_deconvolution">
+<code class="descclassname">histomicstk.preprocessing.color_deconvolution.</code><code class="descname">sparse_color_deconvolution</code><span class="sig-paren">(</span><em>im_rgb</em>, <em>w_init</em>, <em>beta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/histomicstk/preprocessing/color_deconvolution/sparse_color_deconvolution.html#sparse_color_deconvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#histomicstk.preprocessing.color_deconvolution.sparse_color_deconvolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs adaptive color deconvolution.</p>
+<p>Uses sparse non-negative matrix factorization to adaptively deconvolve a
+given RGB image into intensity images representing distinct stains.
+Similar approach to <code class="docutils literal"><span class="pre">color_deconvolution</span></code> but operates adaptively.
+The input RGB image <cite>im_rgb</cite> consisting of RGB values is first transformed
+into optical density space as a row-matrix, and then is decomposed as
+<span class="math">\(V = W H\)</span> where <span class="math">\(W\)</span> is a 3xk matrix containing stain vectors
+in columns and <span class="math">\(H\)</span> is a k x m*n matrix of concentrations for each
+stain vector. The system is solved to encourage sparsity of the columns
+of :math&#8221;<cite>H</cite> i.e. most pixels should not contain significant contributions
+from more than one stain. Can use a hot-start initialization from a color
+deconvolution matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>im_rgb</strong> (<em>array_like</em>) &#8211; An RGB image of type unsigned char, or a 3xN matrix of RGB pixel
+values.</li>
+<li><strong>w_init</strong> (<em>array_like</em>) &#8211; A 3xK matrix containing the color vectors in columns. Should not be
+complemented with ComplementStainMatrix for sparse decomposition to
+work correctly.</li>
+<li><strong>beta</strong> (<em>double</em>) &#8211; Regularization factor for sparsity of <span class="math">\(H\)</span> - recommended 0.5.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>stains</strong> (<em>array_like</em>) &#8211; An rgb image with deconvolved stain intensities in each channel,
+values ranging from [0, 255], suitable for display.</li>
+<li><strong>w</strong> (<em>array_like</em>) &#8211; The final 3 x k stain matrix produced by NMF decomposition.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Return values are returned as a namedtuple</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">histomicstk.preprocessing.color_deconvolution.ColorDeconvolution()</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>J. Xu, L. Xiang, G. Wang, S. Ganesan, M. Feldman, N.N. Shih,
+H. Gilmore, A. Madabhushi, &#8220;Sparse Non-negative Matrix
+Factorization (SNMF) based color unmixing for breast
+histopathological image analysis,&#8221; in IEEE Computer Graphics
+and Applications, vol.46,no.1,pp.20-9, 2015.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="histomicstk.preprocessing.color_normalization.html" class="btn btn-neutral float-right" title="histomicstk.preprocessing.color_normalization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="histomicstk.preprocessing.color_conversion.html" class="btn btn-neutral" title="histomicstk.preprocessing.color_conversion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Kitware, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
